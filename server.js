@@ -6,14 +6,13 @@ const bodyParser = require('body-parser'),
     path = require('path'),
     valueStream = require('./value-stream.js'),
     packageInfo = require('./package.json'),
+    config = require('./config'),
+    _ = require('lodash'),
     argv = require('yargs').argv;
 // import {fetchToken, isTokenExpired} from "./tools/tokenTool";
-import config from './config';
-import * as _ from 'lodash';
 
 let port = argv.port || 3003;
 
-const path = require('path');
 const proxy = require('http-proxy-middleware');
 // const activityCodeJson = require(path.join(__dirname, 'ActivityCode.json'));
 

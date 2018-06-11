@@ -1,0 +1,16 @@
+{
+  "way": "push",
+  "stations": [
+    {
+      "seconds-per-unit": 60,
+      "limit": null,
+      "order":  1
+    },
+    {
+      "seconds-per-unit": 90,
+      "limit": null,
+      "order": 2
+    }
+  ],
+  "number-of-units": 120
+}
