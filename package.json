@@ -1,0 +1,19 @@
+{
+  "name": "industrial-stream",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luoyaqifei/industrial-stream.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/luoyaqifei/industrial-stream/issues"
+  },
+  "homepage": "https://github.com/luoyaqifei/industrial-stream#readme"
+}
