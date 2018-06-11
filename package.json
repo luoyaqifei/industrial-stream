@@ -109,6 +109,45 @@
     "webpack-hot-middleware": "2.18.2",
     "webpack-md5-hash": "0.0.5"
   },
+  "babel": {
+    "presets": [
+      "react",
+      "stage-1"
+    ],
+    "env": {
+      "development": {
+        "presets": [
+          "env",
+          "react-hmre"
+        ]
+      },
+      "production": {
+        "presets": [
+          [
+            "env",
+            {
+              "es2015": {
+                "modules": false
+              },
+              "targets": {
+                "ie": 9,
+                "uglify": true
+              }
+            }
+          ]
+        ],
+        "plugins": [
+          "transform-react-constant-elements",
+          "transform-react-remove-prop-types"
+        ]
+      },
+      "test": {
+        "presets": [
+          "env"
+        ]
+      }
+    }
+  },
   "eslintConfig": {
     "root": true,
     "extends": [
