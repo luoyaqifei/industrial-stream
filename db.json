@@ -1,16 +1,20 @@
 {
-  "way": "push",
-  "stations": [
-    {
-      "seconds-per-unit": 60,
-      "limit": null,
-      "order":  1
-    },
-    {
-      "seconds-per-unit": 90,
-      "limit": null,
-      "order": 2
-    }
-  ],
-  "number-of-units": 120
+  "problem": {
+    "way": "push",
+    "stations": [
+      {
+        "id": "2afcd031-0d3e-4f79-8a58-9202b2577a6f",
+        "seconds-per-unit": 60,
+        "limit": null,
+        "order": 1
+      },
+      {
+        "id": "ddfaa7ed-faec-4e82-8056-613fc7010103",
+        "seconds-per-unit": 90,
+        "limit": null,
+        "order": 2
+      }
+    ],
+    "number-of-units": 120
+  }
 }
