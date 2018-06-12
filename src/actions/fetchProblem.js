@@ -1,8 +1,8 @@
-import * as schema from "../../schemas/index";
+import * as schema from "../schemas/index";
 import {normalize} from 'normalizr';
-import config from '../../../config';
+import config from '../../config';
 import axios from 'axios';
-import * as types from '../../constants/ActionTypes';
+import * as types from '../constants/ActionTypes';
 
 const requestProblem = () => {
   return {

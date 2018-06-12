@@ -2,13 +2,13 @@ import {routerReducer} from 'react-router-redux';
 import {combineReducers} from 'redux';
 import problem, * as fromProblem from "./problemReducer";
 import byId, * as fromById from "./byId";
-import testResult, * as fromTestResult from "./testResult";
+import testResult from './testResult';
 
 const rootReducer = combineReducers({
   byId,
-  testResult,
   problem,
-  routing: routerReducer,
+  testResult,
+  routing: routerReducer
 });
 
 export default rootReducer;

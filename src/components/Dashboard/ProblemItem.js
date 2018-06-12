@@ -8,36 +8,36 @@ import { StationItem } from './StationItem';
 import { getIsFetching } from "../../reducers/problemReducer";
 import { getStation } from "../../reducers/byId";
 import ProblemHeader from "./ProblemHeader";
+import TestProblemBtn from './TestProblemBtn';
+import { StationsHeader } from './StationsHeader';
 
 export class ProblemItem extends Component {
   render() {
     const { isFetching } = this.props;
-    const { problem, stations } = this.props;
+    const { problem, stations} = this.props;
     if (isFetching || problem == null) {
       return (<div>Loading...</div>);
     }
     let stationCount = stations.length;
+    const {testResult} = this.props;
     return (
       <div>
         <ProblemHeader />
         <h2>
           way: {problem.way}<br />
           number of units to produce: {problem["number-of-units"]}
-
         </h2>
         <table className="table table-striped">
-          <thead>
-            <tr>
-              <th className="text-center"> station </th>
-              <th className="text-center"> second per unit </th>
-              <th className="text-center"> limit </th>
-            </tr>
-          </thead>
+          <StationsHeader />
           <tbody>
             {stations.map(s => <StationItem
               key={s.id} id={s.id} order={s.order} secondsPerUnit={s["seconds-per-unit"]} limit={s.limit} isLast={s.order == stationCount} />)}
           </tbody>
         </table>
+        <h2>
+          <TestProblemBtn {...this.props} />
+        </h2>
+        {testResult == null ? null : <span>{testResult[problem.id]}</span>}
       </div>
     );
   }
@@ -49,7 +49,8 @@ const mapStateToProps = (state) => {
   return {
     problem,
     isFetching: getIsFetching(state),
-    stations: problem == null ? null : problem.stations.map(s => getStation(state.byId.byStationId, s))
+    stations: problem == null ? null : problem.stations.map(s => getStation(state.byId.byStationId, s)),
+    testResult: state.testResult
   };
 };
 

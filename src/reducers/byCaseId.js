@@ -1,7 +1,7 @@
 import * as types from '../constants/ActionTypes';
 
 export const byCaseId = (state = {}, action) => {
-  if (action.response) {
+  if (action.type == types.RECEIVE_PROBLEM_SUCCESS && action.response) {
     return {
       ...state,
       ...action.response.entities.problem
