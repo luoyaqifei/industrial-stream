@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import * as _ from 'lodash';
 
 class WrappedInput extends Component {
@@ -9,12 +8,12 @@ class WrappedInput extends Component {
   }
 
   render() {
-    const {name, type, id, onChange} = this.props;
+    const {name, type, id, onChange, className} = this.props;
 
     return (
       <input
-        className="form-control"
-        // placeholder={name}
+        className={className?className:"form-control"}
+        placeholder={name}
         name={name}
         value={this.state.value}
         type={type}
@@ -27,13 +26,5 @@ class WrappedInput extends Component {
       />);
   }
 }
-
-WrappedInput.propTypes = {
-  property: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  type: PropTypes.string,
-  name: PropTypes.string,
-  id: PropTypes.string,
-  onChange: PropTypes.func
-};
 
 export default WrappedInput;

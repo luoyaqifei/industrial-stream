@@ -10,6 +10,9 @@ import { getStation } from "../../reducers/byId";
 import ProblemHeader from "./ProblemHeader";
 import TestProblemBtn from './TestProblemBtn';
 import { StationsHeader } from './StationsHeader';
+import { RECEIVE_PROBLEM_SUCCESS } from "../../constants/ActionTypes";
+import WrappedInput from '../WrappedInput';
+import WrappedDropdown from '../WrappedDropdown';
 
 export class ProblemItem extends Component {
   render() {
@@ -19,19 +22,37 @@ export class ProblemItem extends Component {
       return (<div>Loading...</div>);
     }
     let stationCount = stations.length;
-    const {testResult} = this.props;
+    const {testResult, onStationChange, onProblemChange} = this.props;
     return (
       <div>
         <ProblemHeader />
         <h2>
-          way: {problem.way}<br />
-          number of units to produce: {problem["number-of-units"]}
+          way: <WrappedDropdown className="form-control-static"
+                property={problem.way}
+                options={["push", "pull"]}
+                id={problem.id}
+                name="way"
+                type="string"
+                onChange={onProblemChange} />
+          <br />
+          number of units to produce: <WrappedInput className="form-control-static"
+                property={problem["number-of-units"]}
+                id={problem.id}
+                name="number-of-units"
+                type="number"
+                onChange={onProblemChange} />
         </h2>
         <table className="table table-striped">
-          <StationsHeader />
+          <StationsHeader/>
           <tbody>
             {stations.map(s => <StationItem
-              key={s.id} id={s.id} order={s.order} secondsPerUnit={s["seconds-per-unit"]} limit={s.limit} isLast={s.order == stationCount} />)}
+              key={s.id} 
+              id={s.id} 
+              order={s.order} 
+              secondsPerUnit={s["seconds-per-unit"]} 
+              limit={s.limit} 
+              isLast={s.order == stationCount}
+              onChange={onStationChange} />)}
           </tbody>
         </table>
         <h2>
@@ -50,7 +71,7 @@ const mapStateToProps = (state) => {
     problem,
     isFetching: getIsFetching(state),
     stations: problem == null ? null : problem.stations.map(s => getStation(state.byId.byStationId, s)),
-    testResult: state.testResult
+    testResult: state.testResult,
   };
 };
 

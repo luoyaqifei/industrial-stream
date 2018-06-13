@@ -17,7 +17,7 @@ export const byCaseId = (state = {}, action) => {
       }
     };
   }
-  else if (action.type === types.UPDATE_PROBLEM_CASE) {
+  else if (action.type === types.UPDATE_PROBLEM) {
     return {
       ...state,
       [action.id]: {

@@ -9,11 +9,11 @@ class WrappedDropdown extends Component {
   }
 
   render() {
-    const {name, id, onChange, options} = this.props;
+    const {name, id, onChange, options, className} = this.props;
 
     return (
       <select
-        className="form-control"
+        className={className?className:"form-control"}
         name={name}
         value={this.state.value}
         onChange={(e) => {
