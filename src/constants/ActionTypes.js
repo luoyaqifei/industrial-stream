@@ -1,4 +1,8 @@
 export const ADD_STATION = 'ADD_STATION';
+export const REMOVE_STATION = 'REMOVE_STATION';
+export const ADD_PROBLEM = 'ADD_PROBLEM';
+export const SAVE_PROBLEM = 'SAVE_PROBLEM';
+export const RESET_PROBLEM = 'RESET_PROBLEM';
 export const UPDATE_STATION = 'UPDATE_STATION';
 export const UPDATE_PROBLEM = 'UPDATE_PROBLEM';
 export const REQUEST_PROBLEM = 'REQUEST_PROBLEM';

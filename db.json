@@ -17,5 +17,24 @@
       }
     ],
     "number-of-units": 120
+  },
+  "default-problem": {
+    "id": "5cccd970-2bb4-45bb-81e9-7ca77f4d2960",
+    "way": "push",
+    "stations": [
+      {
+        "id": "775136dc-7a0d-4870-a5e7-e5904caeeb2b",
+        "seconds-per-unit": 60,
+        "limit": null,
+        "order": 1
+      },
+      {
+        "id": "d810ab24-b6df-4a3b-8a04-0007558ce1b3",
+        "seconds-per-unit": 90,
+        "limit": null,
+        "order": 2
+      }
+    ],
+    "number-of-units": 120
   }
 }

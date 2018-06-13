@@ -7,7 +7,7 @@ export const byCaseId = (state = {}, action) => {
       ...action.response.entities.problem
     };
   }
-  else if (action.type === types.ADD_PROBLEM_CASE) {
+  else if (action.type === types.ADD_PROBLEM) {
     return {
       ...state,
       [action.id]: {
@@ -26,17 +26,31 @@ export const byCaseId = (state = {}, action) => {
       }
     };
   }
-  else if (action.type === types.ADD_SECTION) {
+  else if (action.type === types.ADD_STATION) {
     return {
       ...state,
-      [action.caseId]: {
-        ...state[action.caseId],
-        sections: [
-          ...state[action.caseId].sections,
-          action.id
+      [action.problemId]: {
+        ...state[action.problemId],
+        stations: [
+          ..._.takeWhile(state[action.problemId].stations, i => i != action.previousSliblingId),
+          action.previousSliblingId,
+          action.id,
+          ..._.takeRightWhile(state[action.problemId].stations, i => i != action.previousSliblingId)
         ]
       }
     };
+  }
+  else if (action.type === types.REMOVE_STATION) {
+    return {
+      ...state,
+      [action.problemId]: {
+        ...state[action.problemId],
+        stations: [
+          ..._.takeWhile(state[action.problemId].stations, i => i != action.id),
+          ..._.takeRightWhile(state[action.problemId].stations, i => i != action.id)
+        ]
+      }
+    }
   }
   return state;
 };
