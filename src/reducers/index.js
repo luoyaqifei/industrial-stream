@@ -18,8 +18,7 @@ export const getProblem = (state) => {
   return fromById.getProblem(state.byId.byCaseId, id);
 };
 
-export const getIsProblemCasesFetching = (state) => {
-  return fromList.getIsFetching(state.problemCaseList);
-};
-
+export const getIsTestResultFetching = (state) => {
+  return testRetsult.getIsFetching(state.testResult);
+}
 

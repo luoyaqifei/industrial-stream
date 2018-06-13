@@ -13,44 +13,45 @@ import { StationsHeader } from './StationsHeader';
 import { RECEIVE_PROBLEM_SUCCESS } from "../../constants/ActionTypes";
 import WrappedInput from '../WrappedInput';
 import WrappedDropdown from '../WrappedDropdown';
+import { TestResult } from './TestResult';
 
 export class ProblemItem extends Component {
   render() {
     const { isFetching } = this.props;
-    const { problem, stations} = this.props;
+    const { problem, stations } = this.props;
     if (isFetching || problem == null) {
       return (<div>Loading...</div>);
     }
     let stationCount = stations.length;
-    const {testResult, onStationChange, onProblemChange} = this.props;
+    const { testResult, onStationChange, onProblemChange } = this.props;
     return (
       <div>
         <ProblemHeader />
         <h2>
           way: <WrappedDropdown className="form-control-static"
-                property={problem.way}
-                options={["push", "pull"]}
-                id={problem.id}
-                name="way"
-                type="string"
-                onChange={onProblemChange} />
+            property={problem.way}
+            options={["push", "pull"]}
+            id={problem.id}
+            name="way"
+            type="string"
+            onChange={onProblemChange} />
           <br />
           number of units to produce: <WrappedInput className="form-control-static"
-                property={problem["number-of-units"]}
-                id={problem.id}
-                name="number-of-units"
-                type="number"
-                onChange={onProblemChange} />
+            property={problem["number-of-units"]}
+            id={problem.id}
+            name="number-of-units"
+            type="number"
+            onChange={onProblemChange} />
         </h2>
         <table className="table table-striped">
-          <StationsHeader/>
+          <StationsHeader />
           <tbody>
             {stations.map(s => <StationItem
-              key={s.id} 
-              id={s.id} 
-              order={s.order} 
-              secondsPerUnit={s["seconds-per-unit"]} 
-              limit={s.limit} 
+              key={s.id}
+              id={s.id}
+              order={s.order}
+              secondsPerUnit={s["seconds-per-unit"]}
+              limit={s.limit}
               isLast={s.order == stationCount}
               onChange={onStationChange} />)}
           </tbody>
@@ -58,7 +59,11 @@ export class ProblemItem extends Component {
         <h2>
           <TestProblemBtn {...this.props} />
         </h2>
-        {testResult == null ? null : <span>{testResult[problem.id]}</span>}
+        {_.isEmpty(testResult.data)
+          ? null
+          : <TestResult
+            isFetching={testResult.isFetching}
+            data={testResult.data[problem.id]} />}
       </div>
     );
   }

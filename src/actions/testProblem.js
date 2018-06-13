@@ -1,7 +1,7 @@
 import config from '../../config';
 import axios from 'axios';
 import * as types from '../constants/ActionTypes';
-import {wrappedDenormalizeProblem} from "../utilities/wrappedDenormalizeProblemCase";
+import { wrappedDenormalizeProblem } from "../utilities/wrappedDenormalizeProblemCase";
 
 const receiveTestResultSuccess = (response, id) => {
   return {
@@ -25,23 +25,29 @@ const requestTestProblem = () => {
   };
 };
 
-const testProblemRequest = (probleme) => {
-  return new Promise(resolve => "hahaha");
+const testProblemRequest = (problem) => {
+  return axios(`${config.protocol}://${config.hostname}:${config.serverPort}/value-stream`, {
+    method: 'post',
+    headers: {
+      'Accept': 'application/json, text/plain, */*',
+      'Content-Type': 'application/json',
+    },
+    data: JSON.stringify(problem)
+  });
 };
 
 export const testProblem = (id) => (dispatch, getState) => {
-  console.log("id",id);
   dispatch(requestTestProblem());
 
   const denormalizedProblem = wrappedDenormalizeProblem(id, getState());
-
-  dispatch(receiveTestResultSuccess({data: "This is the mock test result!!!"}, id))
-    // return testProblemRequest(denormalizedProblem)
-    //   .then(response => {
-    //     console.log(response)
-    //     dispatch(receiveTestResultSuccess(response, id));
-    //   })
-    //   .catch(error => {
-    //     dispatch(receiveTestResultFailure(error, id));
-    //   });
+console.log(denormalizedProblem);
+  // dispatch(receiveTestResultSuccess({ data: "This is the mock test result!!!" }, id))
+  return testProblemRequest(denormalizedProblem)
+    .then(response => {
+      console.log(response)
+      dispatch(receiveTestResultSuccess(response, id));
+    })
+    .catch(error => {
+      dispatch(receiveTestResultFailure(error, id));
+    });
 };

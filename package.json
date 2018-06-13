@@ -6,8 +6,7 @@
   "scripts": {
     "preinstall": "node tools/nodeVersionCheck.js",
     "start-message": "babel-node tools/startMessage.js",
-    "prestart": "npm-run-all --parallel start-message preprocess-db",
-    "preprocess-db": "node tools/addIdforMarker.js",
+    "prestart": "npm run start-message",
     "start": "npm-run-all --parallel test:watch open:src lint:watch start-server start-json-server",
     "start-server": "babel-node server.js -- --watch",
     "start-json-server": "json-server --watch db.json --port 3004",
