@@ -23,10 +23,10 @@ app.use(bodyParser.json({ limit: '100mb' }));
 //back end logic
 app.post('/value-stream',valueStream.calculateTime);
 
-app.get('/test', (req, res) => {
-    res.send("hh");
-    return res;
-})
+// app.get('/test', (req, res) => {
+//     res.send("hh");
+//     return res;
+// })
 
 
 console.log(`${packageInfo.name} ${packageInfo.version} : express starting at ${port}`);
