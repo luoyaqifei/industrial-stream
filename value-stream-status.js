@@ -29,7 +29,6 @@ module.exports = {
         .value();
         let productivityPerSatation = orderedSatations.map(i=>i["seconds-per-unit"]);
 
-
         let stationLimit = req.body.stations.map(i=>i["limit"]);
         console.log("Station limits are: ", stationLimit);
 
@@ -48,9 +47,8 @@ module.exports = {
                 status: 0,
                 stock: 0
             }})
-            // let outObj = _.zipObject(_.map(stationArray, n => `Station ${n+1} Status: `), buffers);
             let outObj = {
-                "time": timeLimit,
+                "input-number": numberUnit,
                 "output-number": numberUnit,
                 stations: stationsInfo
             };
@@ -63,20 +61,11 @@ module.exports = {
             if(inputNumber > 0)
             {
                 if(stationLimit[0] == null){stationLimit[0] = Number.MAX_SAFE_INTEGER;}
-                
-                console.log("stationLimit[0]", stationLimit[0]);
-                console.log("station_status[0]", station_status[0]);
-                console.log("station_stock[0]", station_stock[0]);
-
                 if(station_status[0] == "Idle" && station_stock[0] < stationLimit[0])
                 {
                     station_status[0] = "Running";
                     station_processTime[0]++;
                     inputNumber--;
-
-                    console.log("station_processTime[0]", station_processTime[0]);
-                    console.log("productivityPerSatation[0]", productivityPerSatation[0]);
-
                     if(station_processTime[0] >= productivityPerSatation[0])
                     {
                         station_status[0] = "Idle";
@@ -146,9 +135,16 @@ module.exports = {
             status: station_status[i],
             stock: station_stock[i]
         }})
+
+        let unitsInStation = _
+        .chain(station_status)
+        .filter((s)=>s == "Running")
+        .value();
+
+        let totalIn = _.sum(station_stock) + unitsInStation.length;
         // let outObj = _.zipObject(_.map(stationArray, n => `Station ${n+1} Status: `), buffers);
         let outObj = {
-            "time": timeLimit,
+            "input-number": totalIn,
             "output-number": station_stock[stations.length - 1],
             stations: stationsInfo
         };
