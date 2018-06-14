@@ -35,5 +35,6 @@ module.exports = {
         console.log('timused', timeUsed);
         res.status(200).json(JSON.parse(JSON.stringify({"time": timeUsed})));
         return res;
+
     }
 };

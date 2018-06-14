@@ -38,13 +38,13 @@ module.exports = {
         let station_processTime =Array.from(Array(stations.length), (_,x) => 0);
         let station_stock = Array.from(Array(stations.length), (_,x) => 0);
 
-        if(timeInterval > timeLimit)
+        if(timeInterval >= timeLimit)
         {
             let nArr = Array.from(Array(stations.length), (_,x) => x);
             // let buffers = Array.apply(null, {numberUnit}).map(function() {return 0});
             let stationsInfo = _.map(nArr, i=> {return {
                 order: i+1,
-                status: 0,
+                status: "Idle",
                 stock: 0
             }})
             let outObj = {
