@@ -40,13 +40,11 @@ export class ProblemItem extends Component {
 
 const mapStateToProps = (state) => {
   const problem = getProblem(state);
-  console.log('problem aaa', problem);
-  console.log("stations aaa", problem == null ? null : problem.stations.map(s => getStation(state.byId.byStationId, s)))
   return {
     problem,
     isFetching: getIsFetching(state),
     stations: problem == null ? null : problem.stations.map(s => getStation(state.byId.byStationId, s)),
-    testResult: state.testResult,
+    testResult: state.testResult
   };
 };
 

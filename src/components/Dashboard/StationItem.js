@@ -22,12 +22,12 @@ export const StationItem = ({ id, order, secondsPerUnit, limit, isLast, onChange
             type="number"
             onChange={onChange} />}</td>
         <td>
-            <button type="button" class="btn btn-default btn-lg" onClick={() => onAddStationClicked(v4(), id, order, problemId)}>
-                <span title="add a station below" className="glyphicon glyphicon-plus" />
+            <button title="add a station below" type="button" className="btn btn-default btn-lg" onClick={() => onAddStationClicked(v4(), id, order, problemId)}>
+                <span className="glyphicon glyphicon-plus" />
             </button>
-            <button type="button" class="btn btn-default btn-lg" onClick={() => onRemoveStationClicked(id, order, problemId, isLast)}>
+            <button title="remove the station" type="button" className="btn btn-default btn-lg" onClick={() => onRemoveStationClicked(id, order, problemId, isLast)}>
                 <span
-                    title="remove this station" className="glyphicon glyphicon-minus" />
+                     className="glyphicon glyphicon-minus" />
             </button>
         </td>
     </tr>;

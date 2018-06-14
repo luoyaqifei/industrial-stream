@@ -38,14 +38,17 @@ export const byStationId = (state = {}, action) => {
       }, {});
       return newStations;
     case types.REMOVE_STATION:
-      const newState = Object.assign({}, state);
-      for (let station in newState) {
-        if (newState[station].order > action.order) {
-          newState[station].order = newState[station].order - 1;
+      const newState = _.values(_.map(state, (station) => {
+        return {
+          [station.id]:
+            {
+              ...station,
+              order: station.order > action.order ? station.order - 1 : station.order
+            }
         }
-      }
-      delete newState[action.id];
-      return newState;
+      }));
+      return _.omit(Object.assign({}, ...newState)
+      , action.id);
     default:
       return state;
   }

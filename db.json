@@ -36,5 +36,20 @@
       }
     ],
     "number-of-units": 120
+  },
+  "value-stream-status": {
+    "output-number": 8,
+    "stations": [
+      {
+        "order": 1,
+        "status": "Running",
+        "stock": 4
+      },
+      {
+        "order": 2,
+        "status": "Running",
+        "stock": 8
+      }
+    ]
   }
 }
