@@ -16,7 +16,9 @@
         "order": 2
       }
     ],
-    "number-of-units": 120
+    "number-of-units": 120,
+    "cost-per-unit": 10,
+    "revenue-per-unit": 30
   },
   "default-problem": {
     "id": "5cccd970-2bb4-45bb-81e9-7ca77f4d2960",

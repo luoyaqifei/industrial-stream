@@ -26,10 +26,10 @@ const requestTestProblem = () => {
 };
 
 const testProblemRequest = (problem) => {
-  if (problem["time-interval"] === null
-    || problem["time-interval"] === undefined
-    || problem["time-interval"] === ''
-    || problem['time-interval'] === NaN) {
+  if (problem["time-interval"] == null
+    || problem["time-interval"] == undefined
+    || problem["time-interval"] == ''
+    || isNaN(problem['time-interval'])) {
     return testProblemRequestTotal(problem);
   }
   else {
@@ -49,33 +49,14 @@ const testProblemRequestTotal = (problem) => {
 };
 
 const testProblemRequestWithTimeInterval = (problem) => {
-  const problemMock = {
-    "way": "push",
-    "stations": [
-      {
-        "id": "2afcd031-0d3e-4f79-8a58-9202b2577a6f",
-        "seconds-per-unit": 60,
-        "limit": null,
-        "order": 1
-      },
-      {
-        "id": "ddfaa7ed-faec-4e82-8056-613fc7010103",
-        "seconds-per-unit": 90,
-        "limit": null,
-        "order": 2
-      }
-    ],
-    "number-of-units": 120,
-    "time-interval": 800
-  }
-  // return axios(`${config.protocol}://${config.hostname}:${config.serverPort}/value-stream-status`, {
-  return axios(`${config.protocol}://${config.hostname}:${config.jsonServerPort}/value-stream-status`, {
-    method: 'get',
+  return axios(`${config.protocol}://${config.hostname}:${config.serverPort}/value-stream-status`, {
+  // return axios(`${config.protocol}://${config.hostname}:${config.jsonServerPort}/value-stream-status`, {
+    method: 'post',
     headers: {
       'Accept': 'application/json, text/plain, */*',
       'Content-Type': 'application/json',
     },
-    // data: JSON.stringify(problemMock)
+    data: JSON.stringify(problem)
   });
 };
 

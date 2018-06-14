@@ -7,10 +7,10 @@ export default class App extends Component {
   render() {
     return (
       <div className="container">
-        <IndexLink to="/">
-          <span> Dashboard </span>
-          <span className="glyphicon glyphicon-home"/>
-        </IndexLink>
+        {/* {/* <IndexLink to="/"> */}
+          <span className="text-primary"> Dashboard </span>
+          {/* <span className="glyphicon glyphicon-home"/> */}
+        {/* </IndexLink> */} 
         <ConnectedHomePage/>
         {this.props.children}
       </div>

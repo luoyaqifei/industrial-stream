@@ -32,7 +32,9 @@ export class ProblemItem extends Component {
           ? null
           : <TestResult
             isFetching={testResult.isFetching}
-            data={testResult.data[problem.id]} />}
+            data={testResult.data[problem.id]}
+            costPerUnit={problem["cost-per-unit"]}
+            revenuePerUnit={problem["revenue-per-unit"]} />}
       </div>
     );
   }

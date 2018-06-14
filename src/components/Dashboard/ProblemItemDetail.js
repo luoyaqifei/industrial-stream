@@ -36,20 +36,45 @@ export const ProblemItemDetail = ({ problem, onProblemChange, stations, onStatio
         <br />
 
         {/* <div className="input-group mb-3"> */}
-            <label>
-                Snapshot afer:  (seconds)
+        <label>
+            Snapshot after Time of:  (seconds)
             </label>
-            <WrappedInput
-                // className="form-control-static"
-                property={problem["time-interval"]}
-                id={problem.id}
-                name="time-interval"
-                type="number"
-                onChange={onProblemChange} />
-            {/* <div className="input-group-append">
+        <WrappedInput
+            // className="form-control-static"
+            property={problem["time-interval"]}
+            id={problem.id}
+            name="time-interval"
+            type="number"
+            onChange={onProblemChange} />
+        {/* <div className="input-group-append">
                 <span className="input-group-text" id="basic-addon2">s</span>
             </div> */}
         {/* </div> */}
+        <br />
+        <label>
+            Cost per Unit: ($)
+        </label>
+        <WrappedInput
+            // className="form-control-static"
+            property={problem["cost-per-unit"]}
+            id={problem.id}
+            name="cost-per-unit"
+            type="number"
+            onChange={onProblemChange} />
+        <br />
+        <label>
+            Revenue per Unit: ($)
+        </label>
+        <WrappedInput
+            // className="form-control-static"
+            property={problem["revenue-per-unit"]}
+            id={problem.id}
+            name="revenue-per-unit"
+            type="number"
+            onChange={onProblemChange} />
+        <br />
+
+
         <table className="table table-striped">
             <StationsHeader onAddStationClicked={onAddStationClicked}
                 order={0}
