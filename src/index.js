@@ -8,7 +8,6 @@ import { syncHistoryWithStore } from "react-router-redux";
 import { browserHistory } from "react-router";
 import "../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 import "./styles/styles.scss";
-import "./styles/diff.css";
 import 'babel-polyfill';
 
 const store = configureStore();
