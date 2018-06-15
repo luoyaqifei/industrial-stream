@@ -18,7 +18,7 @@ export const TestResult = ({ isFetching, data, costPerUnit, revenuePerUnit }) =>
             <div>
                 <label>Result till now:</label> <br />
                 <span>It consumed <label>{data["input-number"]}</label> units, cost <label>${costPerUnit * data["input-number"]}</label></span><br />
-                <span>It produced <label>{data["output-number"]}</label> units, got revenue of <label>$${revenuePerUnit * data['output-number']}</label></span>
+                <span>It produced <label>{data["output-number"]}</label> units, got revenue of <label>${revenuePerUnit * data['output-number']}</label></span>
                 <br />
                 <span>Stations</span>
                 <ul>
